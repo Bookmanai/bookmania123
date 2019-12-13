@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+	<html lang="zxx" class="no-js">
+	<head>
+		<!-- Mobile Specific Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Favicon-->
+        {% load static %}
+		<link rel="shortcut icon" href="img/fav.png">
+		<!-- Author Meta -->
+		<meta name="author" content="codepixer">
+		<!-- Meta Description -->
+		<meta name="description" content="">
+		<!-- Meta Keyword -->
+		<meta name="keywords" content="">
+		<!-- meta character set -->
+		<meta charset="UTF-8">
+		<!-- Site Title -->
+		<title>Bookmania</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+			<!--
+			CSS
+			============================================= -->
+                <link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
+                <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+                <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+                <link rel="stylesheet" href="{% static 'css/magnific-popup.css'%}">
+                <link rel="stylesheet" href="{% static 'css/nice-select.css'%}">
+                <link rel="stylesheet" href="{% static 'css/animate.min.css'%}">
+                <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+			<link rel="stylesheet" href="{% static 'css/booklist.css' %}">
+		</head>
+		<body>
+
+			 <header id="header" id="home">
+			    <div class="container">
+			    	<div class="row align-items-center justify-content-between d-flex">
+				      <div id="logo">
+				        <a href="index.html"><img src="{% static 'images/last.png' %}" alt="" title="" /></a>
+				      </div>
+				      <nav id="nav-menu-container">
+				        <ul class="nav-menu">
+				          <li class="menu-active"><a href="{% url 'index'%}">Home</a></li>
+
+				          <li><a href="#price">About</a></li>
+				          <li><a href="#course">Staff</a></li>
+				          <li class="menu-has-children"><a href="">Pages</a>
+				            <ul>
+				              <li><a href="{% url 'books'%}">Books</a></li>
+				              <li><a href="{% url 'authors' %}">Authors</a></li>
+				            </ul>
+<form action="{% url 'search_results' %}" method="get">
+							   <input name="q" type="text" placeholder="Search...">
+							  </form>
+
+
+				          </li>
+
+				        </ul>
+				      </nav><!-- #nav-menu-container -->
+			    	</div>
+			    </div>
+			  </header><!-- #header -->
+
+        <section class="banner-area" id="home">
+				<div class="container">
+
+					<div class="row fullscreen d-flex align-items-center justify-content-start">
+
+						<div class="banner-content col-lg-7">
+{% block content %}
+
+{% if form.errors %}
+  <p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+  {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+  {% else %}
+    <h3 class="text-white">Please login to see this page.</h3>
+  {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<table>
+
+<tr>
+  <td>{{ form.username.label_tag }}</td>
+  <td>{{ form.username }}</td>
+</tr>
+
+<tr>
+  <td>{{ form.password.label_tag }}</td>
+  <td>{{ form.password }}</td>
+</tr>
+</table>
+
+<input type="submit" value="login" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+
+{% endblock %}
+
+						</div>
+						<div class="col-lg-5 banner-right">
+							<img class="img-fluid" src="{% static 'images/header-img.png' %}" alt="">
+						</div>
+					</div>
+				</div>
+			</section>
+             <footer class="footer-area section-gap" id="price">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-5 col-md-6 col-sm-6">
+							<div class="single-footer-widget">
+								<h6>About Us</h6>
+								<p>
+									Our team was created by the project that must be done in a 7 weeks. By this reason we have come together.
+NBK is a team leader.
+Back-ender is Danil.
+Front-ender is Gani(kill him together with me, pls).
+We have accounts in social networks)))
+								</p>
+								<p class="footer-text">
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+All rights reserved | 2019 (c) <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#" target="_blank">Bookmania</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-5  col-md-6 col-sm-6">
+							<div class="single-footer-widget">
+								<h6>Newsletter</h6>
+								<p>Stay update with our latest</p>
+								<div class="" id="mc_embed_signup">
+									<form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
+										<input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '" required="" type="email">
+			                            	<button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+			                            	<div style="position: absolute; left: -5000px;">
+												<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+											</div>
+
+										<div class="info"></div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-6 col-sm-6 social-widget">
+							<div class="single-footer-widget">
+								<h6>Follow Us</h6>
+								<p>Let us be social</p>
+								<div class="footer-social d-flex align-items-center">
+									<a href="https://vk.com/club189637326"><i class="fa fa-vk"></i></a>
+									<a href="https://www.instagram.com/bookmania_python/"><i class="fa fa-instagram"></i></a>
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+	<script src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+			<script src="{% static 'js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+  			<script src="{% static 'js/easing.min.js'%}"></script>
+			<script src="{% static 'js/hoverIntent.js'%}"></script>
+			<script src="{% static 'js/superfish.min.js'%}"></script>
+			<script src="{% static 'js/jquery.ajaxchimp.min.js'%}"></script>
+			<script src="{% static 'js/jquery.magnific-popup.min.js'%}"></script>
+			<script src="{% static 'js/owl.carousel.min.js'%}"></script>
+			<script src="{% static 'js/jquery.sticky.js'%}">
+			<script src="{% static 'js/jquery.nice-select.min.js'%}"></script>
+			<script src="{% static 'js/parallax.min.js'%}"></script>
+			<script src="{% static 'js/waypoints.min.js'%}"></script>
+			<script src="{% static 'js/jquery.counterup.min.js'%}"></script>
+			<script src="{% static 'js/mail-script.js'%}"></script>
+			<script src="{% static 'js/main.js'%}"></script>
+</body>
+</html>
+
+

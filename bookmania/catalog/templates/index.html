@@ -1,0 +1,289 @@
+	<!DOCTYPE html>
+	<html lang="zxx" class="no-js">
+	<head>
+		<!-- Mobile Specific Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Favicon-->
+        {% load static %}
+		<link rel="shortcut icon" href="img/fav.png">
+		<!-- Author Meta -->
+		<meta name="author" content="codepixer">
+		<!-- Meta Description -->
+		<meta name="description" content="">
+		<!-- Meta Keyword -->
+		<meta name="keywords" content="">
+		<!-- meta character set -->
+		<meta charset="UTF-8">
+		<!-- Site Title -->
+		<title>Bookmania</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+			<!--
+			CSS
+			============================================= -->
+                <link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
+                <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+                <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+                <link rel="stylesheet" href="{% static 'css/magnific-popup.css'%}">
+                <link rel="stylesheet" href="{% static 'css/nice-select.css'%}">
+                <link rel="stylesheet" href="{% static 'css/animate.min.css'%}">
+                <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+			<link rel="stylesheet" href="{% static 'css/main.css' %}">
+		</head>
+		<body>
+
+			 <header id="header" id="home">
+			    <div class="container">
+			    	<div class="row align-items-center justify-content-between d-flex">
+				      <div id="logo">
+				        <a href="{% url 'index'%}"><img src="{% static 'images/last.png' %}" alt="" title="" /></a>
+				      </div>
+				      <nav id="nav-menu-container">
+				        <ul class="nav-menu">
+				          <li class="menu-active"><a href="#home">Home</a></li>
+
+				          <li><a href="#price">About</a></li>
+				          <li><a href="#course">Staff</a></li>
+														{% if user.is_authenticated %}
+<li>User: {{ user.get_username }}</li>
+<li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+{% else %}
+<li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+<li><a href="{% url 'signup'%}?next={{request.path}}">Sign up</a></li>
+{% endif %}
+
+				          <li class="menu-has-children"><a href="">Pages</a>
+				            <ul>
+				              <li><a href="{% url 'books'%}">Books</a></li>
+				              <li><a href="{% url 'authors' %}">Authors</a></li>
+
+				            </ul>
+	  <form action="{% url 'search_results' %}" method="get">
+							   <input name="q" type="text" placeholder="Search...">
+							  </form>
+
+							  {% block object-tools %}
+<div class="translate">
+<form action="{% url 'eng' %}" method="POST">
+{% csrf_token %}
+<button type="submit">English</button>
+</form>
+<form action="{% url 'ru' %}" method="POST">
+{% csrf_token %}
+<button type="submit">Russian</button>
+</form>
+</div>
+
+
+{% endblock %}
+
+                          </li>
+
+				        </ul>
+
+
+				      </nav><!-- #nav-menu-container -->
+			    	</div>
+			    </div>
+			  </header><!-- #header -->
+
+
+			<!-- start banner Area -->
+			<section class="banner-area" id="home">
+				<div class="container">
+
+					<div class="row fullscreen d-flex align-items-center justify-content-start">
+
+						<div class="banner-content col-lg-7">
+
+							<h2 class="text-white text-uppercase">Welcome to Bookmania</h2>
+
+							<p class="text-white pt-20 pb-20">
+							Latest added book in our website
+							</p>
+							<a href="#" class="primary-btn text-uppercase">Read</a>
+						</div>
+						<div class="col-lg-5 banner-right">
+							<img class="img-fluid" src="{% static 'images/header-img.png' %}" alt="">
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+
+			<!-- Start about Area -->
+
+			<!-- End fact Area -->
+
+			<!-- Start counter Area -->
+			<!--<section class="counter-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-3 col-md-6">
+							<div class="single-counter">
+								<h1 class="counter">2536</h1>
+								<p>Books</p>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<div class="single-counter">
+								<h1 class="counter">6784</h1>
+								<p>Authors</p>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<div class="single-counter">
+								<h1 class="counter">1059</h1>
+								<p>Videos</p>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<div class="single-counter">
+								<h1 class="counter">12239</h1>
+								<p>Tickets Submitted</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section> -->
+			<!-- end counter Area -->
+
+			<!-- Start price Area -->
+<section class="testomial-area section-gap" id="course">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pb-60 col-lg-8">
+							<div class="title text-center">
+								<h1 class="mb-10">Meet our Team!</h1>
+
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="active-tstimonial-carusel">
+							<div class="single-testimonial item">
+								<img class="mx-auto" src="{% static 'images/1.png' %}" alt="">
+								<p class="desc">
+									Саске вернись в деревню
+								</p>
+								<h4>Nurberdiyeva Bigaisha</h4>
+								<p>
+									Main Leader, pls kill me
+								</p>
+							</div>
+							<div class="single-testimonial item">
+								<img class="mx-auto" src="{% static 'images/2.png' %}" alt="">
+								<p class="desc">
+									123322
+								</p>
+								<h4>Esen Gani</h4>
+								<p>
+									Front-end
+								</p>
+							</div>
+							<div class="single-testimonial item">
+								<img class="mx-auto" src="{% static 'images/3.png' %}" alt="">
+								<p class="desc">
+									Я стану хокаге.
+								</p>
+								<h4>Lim Danil</h4>
+								<p>
+									Back-end
+								</p>
+							</div>
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- End price Area -->
+
+			<!-- Start course Area -->
+
+			<!-- End course Area -->
+
+			<!-- Start call-to-action Area -->
+
+			<!-- End call-to-action Area -->
+
+			<!-- Start testomial Area -->
+
+			<!-- End testomial Area -->
+
+
+			<!-- start footer Area -->
+			<footer class="footer-area section-gap" id="price">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-5 col-md-6 col-sm-6">
+							<div class="single-footer-widget">
+								<h6>About Us</h6>
+								<p>
+									Our team was created by the project that must be done in a 7 weeks. By this reason we have come together.
+NBK is a team leader.
+Back-ender is Danil.
+Front-ender is Gani(kill him together with me, pls).
+We have accounts in social networks)))
+								</p>
+								<p class="footer-text">
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+All rights reserved | 2019 (c) <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#" target="_blank">Bookmania</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-5  col-md-6 col-sm-6">
+							<div class="single-footer-widget">
+								<h6>Newsletter</h6>
+								<p>Stay update with our latest</p>
+								<div class="" id="mc_embed_signup">
+									<form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
+										<input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '" required="" type="email">
+			                            	<button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+			                            	<div style="position: absolute; left: -5000px;">
+												<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+											</div>
+
+										<div class="info"></div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-6 col-sm-6 social-widget">
+							<div class="single-footer-widget">
+								<h6>Follow Us</h6>
+								<p>Let us be social</p>
+								<div class="footer-social d-flex align-items-center">
+									<a href="https://vk.com/club189637326"><i class="fa fa-vk"></i></a>
+									<a href="https://www.instagram.com/bookmania_python/"><i class="fa fa-instagram"></i></a>
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+	<script src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+			<script src="{% static 'js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+  			<script src="{% static 'js/easing.min.js'%}"></script>
+			<script src="{% static 'js/hoverIntent.js'%}"></script>
+			<script src="{% static 'js/superfish.min.js'%}"></script>
+			<script src="{% static 'js/jquery.ajaxchimp.min.js'%}"></script>
+			<script src="{% static 'js/jquery.magnific-popup.min.js'%}"></script>
+			<script src="{% static 'js/owl.carousel.min.js'%}"></script>
+			<script src="{% static 'js/jquery.sticky.js'%}">
+			<script src="{% static 'js/jquery.nice-select.min.js'%}"></script>
+			<script src="{% static 'js/parallax.min.js'%}"></script>
+			<script src="{% static 'js/waypoints.min.js'%}"></script>
+			<script src="{% static 'js/jquery.counterup.min.js'%}"></script>
+			<script src="{% static 'js/mail-script.js'%}"></script>
+			<script src="{% static 'js/main.js'%}"></script>
+</body>
+</html>

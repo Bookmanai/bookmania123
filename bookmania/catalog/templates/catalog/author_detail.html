@@ -1,0 +1,21 @@
+{% extends "base_item.html" %}
+{% load static %}
+{% block content %}<section class="banner-area" id="home">
+				<div class="container">
+					<div class="row fullscreen d-flex align-items-center justify-content-start">
+						<div class="banner-content col-lg-7">
+
+				  <h1>{{ author.last_name }} {{author.first_name }}</h1>
+
+  <p><strong>Birthday:</strong> {{ author.date_of_birth }}</p>
+  <p><strong>Books:</strong> {{ author.book_set.all|join:", " }}</p>
+						</div>
+						<div class="col-lg-5 banner-right">
+							<img class="img-fluid" src="{% static 'images/header-img.png' %}" alt="">
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+{% endblock %}

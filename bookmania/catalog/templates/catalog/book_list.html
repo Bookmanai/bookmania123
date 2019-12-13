@@ -1,0 +1,46 @@
+{% extends "base_item.html" %}
+{% load static %}
+	{% block content %}
+
+        <section class="banner-area" id="home">
+				<div class="container">
+					<div class="row fullscreen d-flex align-items-center justify-content-start">
+						<div class="banner-content col-lg-7">
+
+														<style> a.nubex {
+color: #fff; user-select: none; /* Убираем текстовое выделение */
+text-decoration: none; /* Убираем подчеркивание */
+outline: none; /* Убираем контур вокруг ссылки */
+background-color: #fa8e47; /* Цвет фона */
+padding: 1em 2em; /* Отступ от текста до рамки */
+ float: right;}
+
+a.nubex:active {
+background-color: #ee6206; /* Цвет кнопки при нажатии */
+} a.nubex:hover {
+background-color: #F5001D /* Цвет кнопки при наведении курсора */
+}
+</style>  <a href="https://translate.google.com/?hl=ru" class="nubex">Translator</a>
+						 <h2 class="text-white">Book List </h2>
+
+  {% if book_list %}
+  <ul>
+    {% for book in book_list %}
+      <li>
+        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{book.author}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no books in the library.</p>
+  {% endif %}
+
+
+						</div>
+						<div class="col-lg-5 banner-right">
+							<img class="img-fluid" src="{% static 'images/header-img.png' %}" alt="">
+						</div>
+					</div>
+				</div>
+			</section>
+            {% endblock %}
